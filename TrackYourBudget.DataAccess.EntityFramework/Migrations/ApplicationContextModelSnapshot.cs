@@ -37,7 +37,11 @@ namespace TrackYourBudget.DataAccess.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<decimal>("Amount");
+
                     b.Property<int?>("CategoryId");
+
+                    b.Property<DateTime>("Date");
 
                     b.HasKey("Id");
 

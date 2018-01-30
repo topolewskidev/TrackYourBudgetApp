@@ -1,0 +1,23 @@
+﻿<div class="alert alert-success" [hidden]="!showMessage">
+    <strong>{{message}}</strong>
+</div>
+
+<h1>Dodaj wydatek</h1>
+
+<form novalidate [formGroup]="newExpense" (ngSubmit)="onAddButtonClick()" >
+    <div class="form-group">
+        <h4>Data</h4>
+        <input type="date" class="form-control" formControlName="selectedDate" />
+    </div>
+    <div class="form-group">
+        <h4>Kategoria</h4>
+        <select class="form-control" formControlName="selectedCategory">
+            <option class="form-control" *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <h4>Kwota</h4>
+    <input type="number" min="0" data-number-to-fixed="2" class="form-control" formControlName="amount" />
+    </div>
+    <button type="submit" [disabled]="newExpense.invalid" class="btn btn-primary">Dodaj</button>
+</form>
