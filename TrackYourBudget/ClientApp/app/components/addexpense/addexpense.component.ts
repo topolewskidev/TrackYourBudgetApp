@@ -19,6 +19,11 @@ export class AddExpenseComponent implements OnInit {
             amount: new FormControl(0, Validators.required),
             selectedCategory: new FormControl(null, Validators.required)
         });
+
+        this.newExpense.valueChanges.subscribe(() => {
+            this.showMessage = false;
+            this.message = "";
+        });
     }
 
     ngOnInit(): void {
@@ -38,15 +43,12 @@ export class AddExpenseComponent implements OnInit {
         this.http.post(this.baseUrl + 'api/expenses', newExpense)
             .subscribe(result => {
                 this.showMessage = true;
-                this.message = "Dodano nowy wydatek!"
+                this.message = "Dodano nowy wydatek!";
             });
     }
 
     private onCategoriesDownload(result: any) {
         this.categories = result.json() as Category[];
-        if (this.categories.length > 0) {
-            this.newExpense.value.selectedCategory = this.categories[0].id;
-        }
     }
 }
 

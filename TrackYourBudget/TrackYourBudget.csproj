@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TrackYourBudget.Business\TrackYourBudget.Business.csproj" />
     <ProjectReference Include="..\TrackYourBudget.DataAccess.EntityFramework\TrackYourBudget.DataAccess.csproj" />
   </ItemGroup>
 

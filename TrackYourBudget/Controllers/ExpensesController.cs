@@ -1,24 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
-using TrackYourBudget.DataAccess;
-using TrackYourBudget.Model.Expenses;
+using TrackYourBudget.Business.Common;
+using TrackYourBudget.Business.Expenses.Commands;
 
 namespace TrackYourBudget.Controllers
 {
     [Route("api/[controller]")]
     public class ExpensesController : Controller
     {
-        private readonly ApplicationContext _applicationContext;
+        private readonly ICommandHandler<AddExpenseCommand> _addExpenseCommandHandler;
 
-        public ExpensesController(ApplicationContext applicationContext)
+        public ExpensesController(ICommandHandler<AddExpenseCommand> addExpenseCommandHandler)
         {
-            _applicationContext = applicationContext;
+            _addExpenseCommandHandler = addExpenseCommandHandler;
         }
 
         [HttpPost]
-        public void Add([FromBody] Expense expense)
+        public void Add([FromBody] AddExpenseCommand command)
         {
-            _applicationContext.Expenses.Add(expense);
-            _applicationContext.SaveChanges();
+            _addExpenseCommandHandler.Handle(command);
         }
     }
 }

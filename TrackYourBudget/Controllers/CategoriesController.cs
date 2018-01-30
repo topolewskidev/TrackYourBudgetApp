@@ -1,27 +1,23 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using TrackYourBudget.DataAccess;
-using TrackYourBudget.Model.Categories;
+using TrackYourBudget.Business.Categories.Queries;
 
 namespace TrackYourBudget.Controllers
 {
     [Route("api/[controller]")]
     public class CategoriesController : Controller
     {
-        private readonly ApplicationContext _applicationContext;
+        private readonly IGetAllCategoriesQueryHandler _getAllCategoriesQueryHandler;
 
-        public CategoriesController(ApplicationContext applicationContext)
+        public CategoriesController(IGetAllCategoriesQueryHandler getAllCategoriesQueryHandler)
         {
-            _applicationContext = applicationContext;
+            _getAllCategoriesQueryHandler = getAllCategoriesQueryHandler;
         }
 
         [HttpGet]
-        public IEnumerable<Category> GetAllCategories()
+        public IEnumerable<CategoryDto> GetAllCategories()
         {
-            var categories = _applicationContext.Categories.ToList();
+            var categories = _getAllCategoriesQueryHandler.Get();
             return categories;
         }
     }
