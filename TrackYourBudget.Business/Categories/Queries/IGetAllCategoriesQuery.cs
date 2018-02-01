@@ -2,7 +2,7 @@
 
 namespace TrackYourBudget.Business.Categories.Queries
 {
-    public interface IGetAllCategoriesQueryHandler
+    public interface IGetAllCategoriesQuery
     {
         IEnumerable<CategoryDto> Get();
     }

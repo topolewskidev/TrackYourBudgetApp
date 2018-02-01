@@ -1,4 +1,5 @@
-﻿using TrackYourBudget.Business.Common;
+﻿using System.Linq;
+using TrackYourBudget.Business.Common;
 using TrackYourBudget.DataAccess;
 using TrackYourBudget.Model.Expenses;
 
@@ -17,10 +18,18 @@ namespace TrackYourBudget.Business.Expenses.Commands
         {
             using (_context)
             {
+                var categoryBudgetPlanId = _context.CategoryBudgetPlans
+                    .Where(plan => 
+                        plan.CategoryId == command.CategoryId &&
+                        plan.BudgetPlan.StartDate <= command.Date &&
+                        plan.BudgetPlan.EndDate >= command.Date)
+                    .Select(plan => plan.Id)
+                    .Single();
+
                 _context.Add(new Expense
                 {
                     Amount = command.Amount,
-                    CategoryId = command.CategoryId,
+                    CategoryBudgetPlanId = categoryBudgetPlanId,
                     Date = command.Date
                 });
 

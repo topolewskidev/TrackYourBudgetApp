@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TrackYourBudget.Business.BudgetPlans.Queries;
 using TrackYourBudget.Business.Categories.Queries;
 using TrackYourBudget.Business.Common;
 using TrackYourBudget.Business.Expenses.Commands;
@@ -32,8 +33,11 @@ namespace TrackYourBudget
             var connectionString = Configuration.GetConnectionString("ApplicationConnection");
             services.AddDbContext<ApplicationContext>(builder => builder.UseSqlServer(connectionString));
 
-            services.AddTransient<IGetAllCategoriesQueryHandler, GetAllCategoriesQueryHandler>();
+            services.BuildServiceProvider().GetService<ApplicationContext>().Database.Migrate();
+
+            services.AddTransient<IGetAllCategoriesQuery, GetAllCategoriesQuery>();
             services.AddTransient<ICommandHandler<AddExpenseCommand>, AddExpenseCommandHandler>();
+            services.AddTransient<IGetCurrentBudgetPlansWithCategoriesQuery, GetCurrentBudgetPlansWithCategoriesQuery>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,0 +1,15 @@
+﻿<h1>Obecny budżet</h1>
+
+<p>Początek okresu: {{budgetPlan.startDate | date: 'shortDate' }}</p>
+<p>Koniec okresu: {{budgetPlan.endDate | date: 'shortDate' }}</p>
+
+<ul>
+    <li *ngFor="let category of budgetPlan.categories">
+        <strong>{{category.categoryName}}</strong>
+        <ul>
+            <li>Początkowy budżet: {{category.startAmount}}</li>
+            <li>Wydano: {{category.spentAmount}}</li>
+            <li>Pozostało: {{category.startAmount - category.spentAmount}}</li>
+        </ul>
+    </li>
+</ul>

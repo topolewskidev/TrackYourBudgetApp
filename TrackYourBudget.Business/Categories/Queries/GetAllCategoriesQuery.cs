@@ -5,11 +5,11 @@ using TrackYourBudget.DataAccess;
 
 namespace TrackYourBudget.Business.Categories.Queries
 {
-    public class GetAllCategoriesQueryHandler : IGetAllCategoriesQueryHandler
+    public class GetAllCategoriesQuery : IGetAllCategoriesQuery
     {
         private readonly ApplicationContext _context;
 
-        public GetAllCategoriesQueryHandler(ApplicationContext context)
+        public GetAllCategoriesQuery(ApplicationContext context)
         {
             _context = context;
         }

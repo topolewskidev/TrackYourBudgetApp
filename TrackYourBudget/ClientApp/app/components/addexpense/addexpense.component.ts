@@ -32,7 +32,7 @@ export class AddExpenseComponent implements OnInit {
         }, error => console.error(error));
     }
 
-    public onAddButtonClick(http: Http) {
+    public onAddButtonClick() {
         var newExpenseValues = this.newExpense.value;
         var newExpense = new Expense({
             categoryId: newExpenseValues.selectedCategory,

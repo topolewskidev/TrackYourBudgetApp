@@ -7,24 +7,19 @@
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
             </button>
-            <a class='navbar-brand' [routerLink]="['/home']">TrackYourBudget</a>
+            <a class='navbar-brand' [routerLink]="['/budget']">TrackYourBudget</a>
         </div>
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
                 <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/home']">
-                        <span class='glyphicon glyphicon-home'></span> Home
+                    <a [routerLink]="['/budget']">
+                        <span class='glyphicon glyphicon-usd'></span> Budzet
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
                     <a [routerLink]="['/expenses/add']">
-                        <span class='glyphicon glyphicon-education'></span> Dodaj wydatek
-                    </a>
-                </li>
-                <li [routerLinkActive]="['link-active']">
-                    <a [routerLink]="['/addexpense']">
-                        <span class='glyphicon glyphicon-education'></span> Twoje wydatki
+                        <span class='glyphicon glyphicon-barcode'></span> Dodaj wydatek
                     </a>
                 </li>
             </ul>

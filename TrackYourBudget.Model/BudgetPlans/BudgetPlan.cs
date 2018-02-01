@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace TrackYourBudget.Model.BudgetPlans
@@ -9,5 +10,6 @@ namespace TrackYourBudget.Model.BudgetPlans
         public int Id { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public ISet<CategoryBudgetPlan> Categories { get; set; }
     }
 }

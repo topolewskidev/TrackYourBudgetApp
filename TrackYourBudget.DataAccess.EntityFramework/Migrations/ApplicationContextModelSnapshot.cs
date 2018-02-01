@@ -73,13 +73,13 @@ namespace TrackYourBudget.DataAccess.Migrations
 
                     b.Property<decimal>("Amount");
 
-                    b.Property<int>("CategoryId");
+                    b.Property<int>("CategoryBudgetPlanId");
 
                     b.Property<DateTime>("Date");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CategoryBudgetPlanId");
 
                     b.ToTable("Expenses");
                 });
@@ -87,7 +87,7 @@ namespace TrackYourBudget.DataAccess.Migrations
             modelBuilder.Entity("TrackYourBudget.Model.BudgetPlans.CategoryBudgetPlan", b =>
                 {
                     b.HasOne("TrackYourBudget.Model.BudgetPlans.BudgetPlan", "BudgetPlan")
-                        .WithMany()
+                        .WithMany("Categories")
                         .HasForeignKey("BudgetPlanId")
                         .OnDelete(DeleteBehavior.Cascade);
 
@@ -99,9 +99,9 @@ namespace TrackYourBudget.DataAccess.Migrations
 
             modelBuilder.Entity("TrackYourBudget.Model.Expenses.Expense", b =>
                 {
-                    b.HasOne("TrackYourBudget.Model.Categories.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
+                    b.HasOne("TrackYourBudget.Model.BudgetPlans.CategoryBudgetPlan", "CategoryBudgetPlan")
+                        .WithMany("Expenses")
+                        .HasForeignKey("CategoryBudgetPlanId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

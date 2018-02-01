@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using TrackYourBudget.Model.Categories;
+using TrackYourBudget.Model.Expenses;
 
 namespace TrackYourBudget.Model.BudgetPlans
 {
@@ -12,5 +14,6 @@ namespace TrackYourBudget.Model.BudgetPlans
         public int BudgetPlanId { get; set; }
         public BudgetPlan BudgetPlan { get; set; }
         public decimal StartAmount { get; set; }
+        public ISet<Expense> Expenses { get; set; }
     }
 }

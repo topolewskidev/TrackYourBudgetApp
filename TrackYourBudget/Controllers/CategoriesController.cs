@@ -7,17 +7,17 @@ namespace TrackYourBudget.Controllers
     [Route("api/[controller]")]
     public class CategoriesController : Controller
     {
-        private readonly IGetAllCategoriesQueryHandler _getAllCategoriesQueryHandler;
+        private readonly IGetAllCategoriesQuery _getAllCategoriesQuery;
 
-        public CategoriesController(IGetAllCategoriesQueryHandler getAllCategoriesQueryHandler)
+        public CategoriesController(IGetAllCategoriesQuery getAllCategoriesQuery)
         {
-            _getAllCategoriesQueryHandler = getAllCategoriesQueryHandler;
+            _getAllCategoriesQuery = getAllCategoriesQuery;
         }
 
         [HttpGet]
         public IEnumerable<CategoryDto> GetAllCategories()
         {
-            var categories = _getAllCategoriesQueryHandler.Get();
+            var categories = _getAllCategoriesQuery.Get();
             return categories;
         }
     }
