@@ -63,5 +63,8 @@
   "dependencies": {
     "@types/moment": "^2.13.0",
     "moment": "^2.20.1"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
   }
 }
