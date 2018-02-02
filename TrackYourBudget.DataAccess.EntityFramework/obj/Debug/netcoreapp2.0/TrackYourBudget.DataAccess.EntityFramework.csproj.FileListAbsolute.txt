@@ -1,6 +1,0 @@
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.DataAccess.EntityFramework\bin\Debug\netcoreapp2.0\TrackYourBudget.DataAccess.EntityFramework.deps.json
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.DataAccess.EntityFramework\bin\Debug\netcoreapp2.0\TrackYourBudget.DataAccess.EntityFramework.dll
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.DataAccess.EntityFramework\obj\Debug\netcoreapp2.0\TrackYourBudget.DataAccess.EntityFramework.csprojResolveAssemblyReference.cache
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.DataAccess.EntityFramework\obj\Debug\netcoreapp2.0\TrackYourBudget.DataAccess.EntityFramework.csproj.CoreCompileInputs.cache
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.DataAccess.EntityFramework\obj\Debug\netcoreapp2.0\TrackYourBudget.DataAccess.EntityFramework.AssemblyInfoInputs.cache
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.DataAccess.EntityFramework\obj\Debug\netcoreapp2.0\TrackYourBudget.DataAccess.EntityFramework.AssemblyInfo.cs

@@ -1,9 +1,0 @@
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.Model\bin\Debug\netcoreapp2.0\TrackYourBudget.Model.deps.json
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.Model\bin\Debug\netcoreapp2.0\TrackYourBudget.Model.dll
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.Model\bin\Debug\netcoreapp2.0\TrackYourBudget.Model.pdb
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.Model\obj\Debug\netcoreapp2.0\TrackYourBudget.Model.csprojResolveAssemblyReference.cache
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.Model\obj\Debug\netcoreapp2.0\TrackYourBudget.Model.csproj.CoreCompileInputs.cache
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.Model\obj\Debug\netcoreapp2.0\TrackYourBudget.Model.AssemblyInfoInputs.cache
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.Model\obj\Debug\netcoreapp2.0\TrackYourBudget.Model.AssemblyInfo.cs
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.Model\obj\Debug\netcoreapp2.0\TrackYourBudget.Model.dll
-C:\Users\marti\source\repos\TrackYourBudgetApp\TrackYourBudget.Model\obj\Debug\netcoreapp2.0\TrackYourBudget.Model.pdb
