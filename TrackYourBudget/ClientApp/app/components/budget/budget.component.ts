@@ -1,6 +1,6 @@
 ﻿import { Component, Inject, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { DatePipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 
 @Component({
     selector: 'budget',

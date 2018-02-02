@@ -7,9 +7,9 @@
     <li *ngFor="let category of budgetPlan.categories">
         <strong>{{category.categoryName}}</strong>
         <ul>
-            <li>Początkowy budżet: {{category.startAmount}}</li>
-            <li>Wydano: {{category.spentAmount}}</li>
-            <li>Pozostało: {{category.startAmount - category.spentAmount}}</li>
+            <li>Początkowy budżet: {{category.startAmount | number:'1.2-2'}}</li>
+            <li>Wydano: {{category.spentAmount | number:'1.2-2'}}</li>
+            <li>Pozostało: {{category.startAmount - category.spentAmount | number:'1.2-2'}}</li>
         </ul>
     </li>
 </ul>

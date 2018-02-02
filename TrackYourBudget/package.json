@@ -60,5 +60,8 @@
     "webpack-merge": "4.1.0",
     "zone.js": "0.8.12"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/moment": "^2.13.0",
+    "moment": "^2.20.1"
+  }
 }
