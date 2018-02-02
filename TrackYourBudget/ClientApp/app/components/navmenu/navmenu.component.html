@@ -12,12 +12,12 @@
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse'>
             <ul class='nav navbar-nav'>
-                <li [routerLinkActive]="['link-active']">
+                <li [routerLinkActive]="['link-active']" data-toggle='collapse' data-target='.navbar-collapse'>
                     <a [routerLink]="['/budget']">
                         <span class='glyphicon glyphicon-usd'></span> Budzet
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
+                <li [routerLinkActive]="['link-active']" data-toggle='collapse' data-target='.navbar-collapse'>
                     <a [routerLink]="['/expenses/add']">
                         <span class='glyphicon glyphicon-barcode'></span> Dodaj wydatek
                     </a>
