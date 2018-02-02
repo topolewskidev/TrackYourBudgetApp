@@ -2,10 +2,12 @@
 import { Http } from '@angular/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment'; 
+import { Category } from "./category"; 
+import { Expense } from "./expense"; 
 
 @Component({
     selector: 'expense-add',
-    templateUrl: './addexpense.component.html'
+    templateUrl: './add.expense.component.html'
 })
 export class AddExpenseComponent implements OnInit {
     public newExpense: FormGroup;
@@ -49,20 +51,5 @@ export class AddExpenseComponent implements OnInit {
 
     private onCategoriesDownload(result: any) {
         this.categories = result.json() as Category[];
-    }
-}
-
-class Category {
-    id: string;
-    name: string;
-}
-
-class Expense {
-    categoryId: number;
-    amount: number;
-    date: Date;
-
-    public constructor(init?: Partial<Expense>) {
-        Object.assign(this, init);
     }
 }

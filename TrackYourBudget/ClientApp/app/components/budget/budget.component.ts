@@ -1,6 +1,6 @@
 ﻿import { Component, Inject, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { DatePipe, DecimalPipe } from '@angular/common';
+import { BudgetPlanWithCategories } from "./budget.plan.with.categories"
 
 @Component({
     selector: 'budget',
@@ -20,16 +20,4 @@ export class BudgetComponent implements OnInit {
     private onBudgetPlanDownload(result: any) {
         this.budgetPlan = result.json() as BudgetPlanWithCategories;
     }
-}
-
-class CategoryPlan {
-    categoryName: string;
-    startAmount: number;
-    spentAmount: number;
-}
-
-class BudgetPlanWithCategories {
-    startDate: string;
-    endDate: string;
-    categories: CategoryPlan[];
 }
