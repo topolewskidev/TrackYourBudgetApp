@@ -4,13 +4,11 @@
 <p>Koniec okresu: {{budgetPlan.endDate | date: 'shortDate' }}</p>
 
 
-    <div class="panel panel-default" *ngFor="let category of budgetPlan.categories; let i = index">
-        <div class="panel-heading" data-toggle="collapse" [attr.data-target]="'#collapseExample-' + i" aria-expanded="false" [attr.aria-controls]="'collapseExample-' + i">{{category.categoryName}}</div>
-        <div class="panel-body collapse" [attr.id]="'collapseExample-' + i">
-            <ul class="list-group">
-                <li class="list-group-item">Początkowy budżet: {{category.startAmount | number:'1.2-2'}}</li>
-                <li class="list-group-item">Wydano: {{category.spentAmount | number:'1.2-2'}}</li>
-                <li class="list-group-item">Pozostało: {{category.startAmount - category.spentAmount | number:'1.2-2'}}</li>
-            </ul>
-        </div>
-    </div>
+<div class="panel panel-default" *ngFor="let category of budgetPlan.categories; let i = index">
+    <div class="panel-heading clickable-panel-header" data-toggle="collapse" [attr.data-target]="'#collapseExample-' + i" aria-expanded="false" [attr.aria-controls]="'collapseExample-' + i">{{category.categoryName}}</div>
+    <ul class="list-group collapse" [attr.id]="'collapseExample-' + i" >
+        <li class="list-group-item">Początkowy budżet: {{category.startAmount | number:'1.2-2'}}</li>
+        <li class="list-group-item">Wydano: {{category.spentAmount | number:'1.2-2'}}</li>
+        <li class="list-group-item">Pozostało: {{category.startAmount - category.spentAmount | number:'1.2-2'}}</li>
+    </ul>
+</div>

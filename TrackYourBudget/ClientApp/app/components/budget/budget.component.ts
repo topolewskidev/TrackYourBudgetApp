@@ -5,6 +5,7 @@ import { BudgetPlanWithCategories } from "./budget.plan.with.categories"
 @Component({
     selector: 'budget',
     templateUrl: './budget.component.html',
+    styleUrls: ['./budget.component.css']
 })
 export class BudgetComponent implements OnInit {
     public budgetPlan: BudgetPlanWithCategories = new BudgetPlanWithCategories();
