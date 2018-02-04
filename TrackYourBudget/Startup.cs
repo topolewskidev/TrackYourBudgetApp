@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
@@ -12,6 +8,8 @@ using TrackYourBudget.Business.BudgetPlans.Queries;
 using TrackYourBudget.Business.Categories.Queries;
 using TrackYourBudget.Business.Common;
 using TrackYourBudget.Business.Expenses.Commands;
+using TrackYourBudget.Business.Users.Helpers;
+using TrackYourBudget.Business.Users.Queries;
 using TrackYourBudget.DataAccess;
 
 namespace TrackYourBudget
@@ -38,6 +36,9 @@ namespace TrackYourBudget
             services.AddTransient<IGetAllCategoriesQuery, GetAllCategoriesQuery>();
             services.AddTransient<ICommandHandler<AddExpenseCommand>, AddExpenseCommandHandler>();
             services.AddTransient<IGetCurrentBudgetPlansWithCategoriesQuery, GetCurrentBudgetPlansWithCategoriesQuery>();
+            services.AddTransient<IIsUserLogInDataValidQuery, IsUserLogInDataValidQuery>();
+            services.AddTransient<IGetUserIdByUserNameQuery, GetUserIdByUserNameQuery>();
+            services.AddTransient<IUserTokenGenerator, UserTokenGenerator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
