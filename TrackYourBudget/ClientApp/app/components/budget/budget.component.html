@@ -7,7 +7,7 @@
         {{category.categoryName}}
         <div *ngIf="category.spentAmount > 0" class="progress form-inline">
             <div class="progress-bar progress-bar-striped" role="progressbar" [ngStyle]="{'width.%': category.spentAmountPercentage}"
-                 [attr.aria-valuenow]="category.spentAmountPercentage" aria-valuemin="0" aria-valuemax="100"
+                 [attr.aria-valuenow]="category.spentAmountPercentage" aria-valuemin="0" aria-valuemax="100" style="max-width: 100%"
                  [ngClass]="{'progress-bar-success': category.spentAmountPercentage <= budgetPlan.daysProgressPercentage, 'progress-bar-danger': category.spentAmountPercentage > 100, 'progress-bar-warning': category.spentAmountPercentage > budgetPlan.daysProgressPercentage}">
                 {{category.spentAmountPercentage}}%
             </div>
