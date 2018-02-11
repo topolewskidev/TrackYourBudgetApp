@@ -28,6 +28,8 @@
     <None Remove="ClientApp\app\components\budget\budget.component.ts" />
     <None Remove="ClientApp\app\components\budget\budget.plan.with.categories.ts" />
     <None Remove="ClientApp\app\components\budget\category.plan.ts" />
+    <None Remove="ClientApp\app\components\lastexpenses\expense.list.item.ts" />
+    <None Remove="ClientApp\app\components\lastexpenses\last.expenses.component.ts" />
     <None Remove="ClientApp\app\components\login\login.component.ts" />
     <None Remove="ClientApp\app\helpers\auth.guard.ts" />
     <None Remove="ClientApp\app\services\alert.service.ts" />
@@ -48,6 +50,8 @@
     <TypeScriptCompile Include="ClientApp\app\components\budget\budget.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\budget\budget.plan.with.categories.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\budget\category.plan.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\lastexpenses\expense.list.item.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\lastexpenses\last.expenses.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\helpers\auth.guard.ts" />
     <TypeScriptCompile Include="ClientApp\app\services\alert.service.ts" />

@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { BudgetComponent } from './components/budget/budget.component';
 import { AddExpenseComponent } from "./components/addexpense/add.expense.component";
+import { LastExpensesComponent } from "./components/lastexpenses/last.expenses.component";
 
 import { AuthGuard } from "./helpers/auth.guard";
 import { AuthenticationService } from "./services/authentication.service";
@@ -23,7 +24,8 @@ import { DataService } from "./services/data.service";
         NavMenuComponent,
         AddExpenseComponent,
         LoginComponent,
-        BudgetComponent
+        BudgetComponent,
+        LastExpensesComponent
     ],
     imports: [
         CommonModule,
@@ -34,6 +36,7 @@ import { DataService } from "./services/data.service";
             { path: '', redirectTo: 'budget', pathMatch: 'full', canActivate: [AuthGuard]  },
             { path: 'budget', component: BudgetComponent, canActivate: [AuthGuard] },
             { path: 'expenses/add', component: AddExpenseComponent, canActivate: [AuthGuard] },
+            { path: 'expenses/last', component: LastExpensesComponent, canActivate: [AuthGuard] },
             { path: 'login', component: LoginComponent },
             { path: '**', redirectTo: 'budget', canActivate: [AuthGuard] }
         ])

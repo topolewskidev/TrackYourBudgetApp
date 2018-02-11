@@ -20,6 +20,5 @@ export class BudgetComponent implements OnInit {
 
     private onBudgetPlanDownload(result: any) {
         this.budgetPlan = result.json() as BudgetPlanWithCategories;
-        console.log(this.budgetPlan.daysProgressPercentage);
     }
 }

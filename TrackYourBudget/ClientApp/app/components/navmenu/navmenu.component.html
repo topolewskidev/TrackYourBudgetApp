@@ -23,6 +23,11 @@
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']" data-toggle='collapse' data-target='.navbar-collapse'>
+                    <a [routerLink]="['/expenses/last']">
+                        <span class='glyphicon glyphicon-list-alt'></span> Ostatnie wydatki
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']" data-toggle='collapse' data-target='.navbar-collapse'>
                     <a [routerLink]="['/login']">
                         <span class='glyphicon glyphicon-log-out'></span> Wyloguj
                     </a>

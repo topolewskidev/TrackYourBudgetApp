@@ -1,0 +1,9 @@
+﻿<h1>Ostatnie wydatki</h1>
+
+<div class="panel panel-default" *ngFor="let expense of expenses;">
+    <div class="panel-heading container">
+        <span class="col-sm-5">{{expense.date | date: 'dd.MM.yyyy' }}</span>
+        <label class="col-sm-5">{{expense.categoryName}}</label>
+        <label class="pull-right">{{expense.amount | number:'1.2-2'}}</label>
+    </div>
+</div>

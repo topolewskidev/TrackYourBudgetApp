@@ -11,6 +11,7 @@ using TrackYourBudget.Business.BudgetPlans.Queries;
 using TrackYourBudget.Business.Categories.Queries;
 using TrackYourBudget.Business.Common;
 using TrackYourBudget.Business.Expenses.Commands;
+using TrackYourBudget.Business.Expenses.Queries;
 using TrackYourBudget.Business.Users.Helpers;
 using TrackYourBudget.Business.Users.Queries;
 using TrackYourBudget.DataAccess;
@@ -26,7 +27,6 @@ namespace TrackYourBudget
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -36,38 +36,11 @@ namespace TrackYourBudget
 
             services.BuildServiceProvider().GetService<ApplicationContext>().Database.Migrate();
 
-            var appSettingsSection = Configuration.GetSection("AppSettings");
-            services.Configure<ApplicationSettingsProvider>(appSettingsSection);
+            SetUpAuthentication(services);
 
-            var appSettings = appSettingsSection.Get<ApplicationSettingsProvider>();
-            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
-            services.AddAuthentication(x =>
-                {
-                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-                .AddJwtBearer(x =>
-                {
-                    x.RequireHttpsMetadata = false;
-                    x.SaveToken = true;
-                    x.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
-
-            services.AddTransient<IGetAllCategoriesQuery, GetAllCategoriesQuery>();
-            services.AddTransient<ICommandHandler<AddExpenseCommand>, AddExpenseCommandHandler>();
-            services.AddTransient<IGetCurrentBudgetPlansWithCategoriesQuery, GetCurrentBudgetPlansWithCategoriesQuery>();
-            services.AddTransient<IIsUserLogInDataValidQuery, IsUserLogInDataValidQuery>();
-            services.AddTransient<IGetUserIdByUserNameQuery, GetUserIdByUserNameQuery>();
-            services.AddTransient<IUserTokenGenerator, UserTokenGenerator>();
+            RegisterServices(services);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -97,6 +70,43 @@ namespace TrackYourBudget
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+        }
+
+        private void RegisterServices(IServiceCollection services)
+        {
+            services.AddTransient<IGetAllCategoriesQuery, GetAllCategoriesQuery>();
+            services.AddTransient<ICommandHandler<AddExpenseCommand>, AddExpenseCommandHandler>();
+            services.AddTransient<IGetCurrentBudgetPlansWithCategoriesQuery, GetCurrentBudgetPlansWithCategoriesQuery>();
+            services.AddTransient<IIsUserLogInDataValidQuery, IsUserLogInDataValidQuery>();
+            services.AddTransient<IGetUserIdByUserNameQuery, GetUserIdByUserNameQuery>();
+            services.AddTransient<IUserTokenGenerator, UserTokenGenerator>();
+            services.AddTransient<IGetLastExpensesQuery, GetLastExpensesQuery>();
+        }
+
+        private void SetUpAuthentication(IServiceCollection services)
+        {
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<ApplicationSettingsProvider>(appSettingsSection);
+
+            var appSettings = appSettingsSection.Get<ApplicationSettingsProvider>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+                {
+                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
         }
     }
 }

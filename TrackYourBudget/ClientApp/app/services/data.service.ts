@@ -24,7 +24,11 @@ export class DataService {
         return this.http.post(this.baseUrl + 'api/expenses', newExpense, this.getLoggedUserToken());
     }
 
-    public getLoggedUserToken() {
+    public getLastExpenses() {
+        return this.http.get(this.baseUrl + 'api/expenses/last', this.getLoggedUserToken());
+    }
+
+    private getLoggedUserToken() {
         let currentUser = JSON.parse(String(localStorage.getItem('currentUser')));
         if (currentUser && currentUser.token) {
             let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
