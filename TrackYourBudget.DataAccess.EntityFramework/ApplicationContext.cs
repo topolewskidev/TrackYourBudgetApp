@@ -2,6 +2,7 @@
 using TrackYourBudget.Model.BudgetPlans;
 using TrackYourBudget.Model.Categories;
 using TrackYourBudget.Model.Expenses;
+using TrackYourBudget.Model.Users;
 
 namespace TrackYourBudget.DataAccess
 {
@@ -15,5 +16,6 @@ namespace TrackYourBudget.DataAccess
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<BudgetPlan> BudgetPlans { get; set; }
         public DbSet<CategoryBudgetPlan> CategoryBudgetPlans { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
