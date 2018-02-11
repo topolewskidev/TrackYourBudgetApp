@@ -1,0 +1,13 @@
+﻿<h1>Logowanie</h1>
+
+<form novalidate (ngSubmit)="onLogInButtonClick()" [formGroup]="loginModel">
+    <div class="form-group">
+        <label>Nazwa użytkownika</label>
+        <input type="text" class="form-control" formControlName="username" />
+    </div>
+    <div class="form-group">
+        <label>Hasło</label>
+        <input type="password" class="form-control" formControlName="password" />
+    </div>
+    <button type="submit" [disabled]="loginModel.invalid" class="btn btn-primary">Zaloguj</button>
+</form>

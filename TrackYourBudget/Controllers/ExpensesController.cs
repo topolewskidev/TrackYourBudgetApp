@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrackYourBudget.Business.Common;
 using TrackYourBudget.Business.Expenses.Commands;
 
 namespace TrackYourBudget.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class ExpensesController : Controller
     {

@@ -1,6 +1,6 @@
-﻿import { Component, Inject, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+﻿import { Component, OnInit } from '@angular/core';
 import { BudgetPlanWithCategories } from "./budget.plan.with.categories"
+import { DataService } from "../../services/data.service"
 
 @Component({
     selector: 'budget',
@@ -10,10 +10,10 @@ import { BudgetPlanWithCategories } from "./budget.plan.with.categories"
 export class BudgetComponent implements OnInit {
     public budgetPlan: BudgetPlanWithCategories = new BudgetPlanWithCategories();
 
-    constructor(private http: Http, @Inject('BASE_URL') private baseUrl: string) { }
+    constructor(private dataService: DataService) { }
 
     ngOnInit(): void {
-        this.http.get(this.baseUrl + 'api/budgetplans/current').subscribe(result => {
+        this.dataService.getCurrentBudget().subscribe(result => {
             this.onBudgetPlanDownload(result);
         }, error => console.error(error));
     }
