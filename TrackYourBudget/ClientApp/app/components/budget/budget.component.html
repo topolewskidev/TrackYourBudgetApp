@@ -1,14 +1,21 @@
 ﻿<h1>Obecny budżet</h1>
-
 <p>Początek okresu: {{budgetPlan.startDate | date: 'shortDate' }}</p>
 <p>Koniec okresu: {{budgetPlan.endDate | date: 'shortDate' }}</p>
 
-
 <div class="panel panel-default" *ngFor="let category of budgetPlan.categories; let i = index">
-    <div class="panel-heading clickable-panel-header" data-toggle="collapse" [attr.data-target]="'#collapseExample-' + i" aria-expanded="false" [attr.aria-controls]="'collapseExample-' + i">{{category.categoryName}}</div>
-    <ul class="list-group collapse" [attr.id]="'collapseExample-' + i" >
+    <div class="panel-heading clickable-panel-header" data-toggle="collapse" [attr.data-target]="'#collapseExample-' + i" aria-expanded="false" [attr.aria-controls]="'collapseExample-' + i">
+        {{category.categoryName}}
+        <div *ngIf="category.spentAmount > 0" class="progress form-inline">
+            <div class="progress-bar progress-bar-striped" role="progressbar" [ngStyle]="{'width.%': category.spentAmountPercentage}"
+                 [attr.aria-valuenow]="category.spentAmountPercentage" aria-valuemin="0" aria-valuemax="100"
+                 [ngClass]="{'progress-bar-success': category.spentAmountPercentage <= budgetPlan.daysProgressPercentage, 'progress-bar-danger': category.spentAmountPercentage > 100, 'progress-bar-warning': category.spentAmountPercentage > budgetPlan.daysProgressPercentage}">
+                {{category.spentAmountPercentage}}%
+            </div>
+        </div>
+    </div>
+    <ul class="list-group collapse" [attr.id]="'collapseExample-' + i">
         <li class="list-group-item">Początkowy budżet: {{category.startAmount | number:'1.2-2'}}</li>
         <li class="list-group-item">Wydano: {{category.spentAmount | number:'1.2-2'}}</li>
-        <li class="list-group-item">Pozostało: {{category.startAmount - category.spentAmount | number:'1.2-2'}}</li>
+        <li class="list-group-item">Pozostało: {{category.remainingAmount | number:'1.2-2'}}</li>
     </ul>
 </div>

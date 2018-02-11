@@ -4,4 +4,5 @@ export class BudgetPlanWithCategories {
     startDate: string;
     endDate: string;
     categories: CategoryPlan[];
+    daysProgressPercentage: number;
 }

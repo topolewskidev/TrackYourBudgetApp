@@ -8,5 +8,6 @@ namespace TrackYourBudget.Business.BudgetPlans.Queries
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public IList<CategoryBudgetPlanDto> Categories { get; set; }
+        public int DaysProgressPercentage { get; set; }
     }
 }

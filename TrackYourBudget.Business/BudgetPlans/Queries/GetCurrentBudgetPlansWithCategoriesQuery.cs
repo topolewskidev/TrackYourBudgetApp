@@ -19,7 +19,7 @@ namespace TrackYourBudget.Business.BudgetPlans.Queries
 
             using (_context)
             {
-                return _context.BudgetPlans
+                var budgetPlan = _context.BudgetPlans
                     .Where(p =>
                         p.StartDate <= currentDate &&
                         p.EndDate >= currentDate)
@@ -32,12 +32,31 @@ namespace TrackYourBudget.Business.BudgetPlans.Queries
                             {
                                 CategoryName = c.Category.Name,
                                 StartAmount = c.StartAmount,
-                                SpentAmount = c.Expenses.Sum(expense => expense.Amount)
+                                SpentAmount = c.Expenses.Sum(expense => expense.Amount),
                             })
                             .ToList()
                     })
                     .Single();
+
+                foreach (var category in budgetPlan.Categories)
+                {
+                    category.RemainingAmount = category.StartAmount - category.SpentAmount;
+                    category.SpentAmountPercentage = (int) (category.SpentAmount / category.StartAmount * 100);
+                }
+
+                budgetPlan.DaysProgressPercentage = CalculateDaysProgressPercentage(budgetPlan);
+
+                return budgetPlan;
             }
+        }
+
+        private int CalculateDaysProgressPercentage(BudgetPlanWithCategoriesDto budgetPlan)
+        {
+            var currentDate = DateTime.Today;
+            var budgetPlanLength = (budgetPlan.EndDate - budgetPlan.StartDate).TotalDays;
+            var daysProgress = (currentDate - budgetPlan.StartDate).TotalDays;
+
+            return (int) (daysProgress / budgetPlanLength * 100);
         }
     }
 }
