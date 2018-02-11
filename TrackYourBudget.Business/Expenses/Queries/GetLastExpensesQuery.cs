@@ -20,6 +20,7 @@ namespace TrackYourBudget.Business.Expenses.Queries
             {
                 return _context.Expenses
                     .OrderByDescending(e => e.Date)
+                    .ThenByDescending(e => e.Id)
                     .Take(20)
                     .Select(e => new ExpenseDto
                     {
