@@ -14,14 +14,10 @@ namespace TrackYourBudget.Business.Users.Queries
 
         public int Get(string username)
         {
-            using (_context)
-            {
-                return _context.Users
-                    .Where(user => user.Username == username)
-                    .Select(user => user.Id)
-                    .Single();
-
-            }
+            return _context.Users
+                .Where(user => user.Username == username)
+                .Select(user => user.Id)
+                .Single();
         }
     }
 }

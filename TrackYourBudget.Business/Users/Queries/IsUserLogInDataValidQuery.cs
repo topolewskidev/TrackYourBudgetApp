@@ -16,22 +16,19 @@ namespace TrackYourBudget.Business.Users.Queries
 
         public bool Get(string username, string password)
         {
-            using (_context)
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-                {
-                    return false;
-                }
-
-                var user = _context.Users.SingleOrDefault(x => x.Username == username);
-
-                if (user == null)
-                {
-                    return false;
-                }
-
-                return IsPasswordValid(password, user.PasswordHash, user.PasswordSalt);
+                return false;
             }
+
+            var user = _context.Users.SingleOrDefault(x => x.Username == username);
+
+            if (user == null)
+            {
+                return false;
+            }
+
+            return IsPasswordValid(password, user.PasswordHash, user.PasswordSalt);
         }
 
         private bool IsPasswordValid(string password, byte[] storedHash, byte[] storedSalt)

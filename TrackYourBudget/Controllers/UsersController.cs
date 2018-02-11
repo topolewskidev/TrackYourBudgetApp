@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrackYourBudget.Business.Users.Helpers;
 using TrackYourBudget.Business.Users.Queries;
 
 namespace TrackYourBudget.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class UsersController : Controller
     {
@@ -18,6 +20,7 @@ namespace TrackYourBudget.Controllers
             _userTokenGenerator = userTokenGenerator;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public IActionResult LogIn([FromBody]UserLoginDto userLoginData)
         {

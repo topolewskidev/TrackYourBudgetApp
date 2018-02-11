@@ -1,9 +1,10 @@
-﻿import { Component, Inject, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+﻿import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment'; 
 import { Category } from "./category"; 
 import { Expense } from "./expense"; 
+import { AlertService } from "../../services/alert.service"; 
+import { DataService } from "../../services/data.service"; 
 
 @Component({
     selector: 'expense-add',
@@ -12,24 +13,19 @@ import { Expense } from "./expense";
 export class AddExpenseComponent implements OnInit {
     public newExpense: FormGroup;
     public categories: Category[];
-    public showMessage: boolean = false;
-    public message: string = "";
 
-    constructor(private http: Http, @Inject('BASE_URL') private baseUrl: string) {
+    constructor(
+        private alertService: AlertService,
+        private dataService: DataService) {
         this.newExpense = new FormGroup({
             selectedDate: new FormControl(moment().format("YYYY-MM-DD"), Validators.required),
             amount: new FormControl(0, Validators.required),
             selectedCategory: new FormControl(null, Validators.required)
         });
-
-        this.newExpense.valueChanges.subscribe(() => {
-            this.showMessage = false;
-            this.message = "";
-        });
     }
 
     ngOnInit(): void {
-        this.http.get(this.baseUrl + 'api/categories').subscribe(result => {
+        this.dataService.getAllCategories().subscribe(result => {
             this.onCategoriesDownload(result);
         }, error => console.error(error));
     }
@@ -42,11 +38,13 @@ export class AddExpenseComponent implements OnInit {
             date: newExpenseValues.selectedDate
         });
 
-        this.http.post(this.baseUrl + 'api/expenses', newExpense)
-            .subscribe(result => {
-                this.showMessage = true;
-                this.message = "Dodano nowy wydatek!";
-            });
+        this.dataService.addNewExpense(newExpense)
+            .subscribe(
+                result => {
+                    this.alertService.success("Dodano nowy wydatek");},
+                error => {
+                    this.alertService.error("Nie udało się dodać wydatku!");
+                });
     }
 
     private onCategoriesDownload(result: any) {

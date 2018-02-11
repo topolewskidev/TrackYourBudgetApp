@@ -1,9 +1,12 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using TrackYourBudget.Business.BudgetPlans.Queries;
 using TrackYourBudget.Business.Categories.Queries;
 using TrackYourBudget.Business.Common;
@@ -33,6 +36,29 @@ namespace TrackYourBudget
 
             services.BuildServiceProvider().GetService<ApplicationContext>().Database.Migrate();
 
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<ApplicationSettingsProvider>(appSettingsSection);
+
+            var appSettings = appSettingsSection.Get<ApplicationSettingsProvider>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+                {
+                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+
             services.AddTransient<IGetAllCategoriesQuery, GetAllCategoriesQuery>();
             services.AddTransient<ICommandHandler<AddExpenseCommand>, AddExpenseCommandHandler>();
             services.AddTransient<IGetCurrentBudgetPlansWithCategoriesQuery, GetCurrentBudgetPlansWithCategoriesQuery>();
@@ -58,6 +84,8 @@ namespace TrackYourBudget
             }
 
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

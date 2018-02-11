@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TrackYourBudget.Business.Categories.Queries;
 
 namespace TrackYourBudget.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     public class CategoriesController : Controller
     {
