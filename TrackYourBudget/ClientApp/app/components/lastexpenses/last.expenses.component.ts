@@ -17,6 +17,6 @@ export class LastExpensesComponent implements OnInit {
     }
 
     private onLastExpensesDownload(result: any) {
-        this.expenses = result.json() as ExpenseListItem[];
+        this.expenses = result as ExpenseListItem[];
     }
 }

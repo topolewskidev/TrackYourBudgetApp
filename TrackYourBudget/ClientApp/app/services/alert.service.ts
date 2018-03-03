@@ -1,5 +1,4 @@
 ﻿import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import { ToastrService, IndividualConfig } from 'ngx-toastr';
 
 @Injectable()

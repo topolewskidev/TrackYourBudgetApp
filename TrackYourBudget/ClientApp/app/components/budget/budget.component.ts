@@ -19,6 +19,6 @@ export class BudgetComponent implements OnInit {
     }
 
     private onBudgetPlanDownload(result: any) {
-        this.budgetPlan = result.json() as BudgetPlanWithCategories;
+        this.budgetPlan = result as BudgetPlanWithCategories;
     }
 }

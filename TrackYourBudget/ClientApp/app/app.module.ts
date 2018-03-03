@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { registerLocaleData } from '@angular/common';
+import localePl from '@angular/common/locales/pl';
 
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -12,9 +14,12 @@ import { AddExpenseComponent } from "./components/addexpense/add.expense.compone
 import { LastExpensesComponent } from "./components/lastexpenses/last.expenses.component";
 
 import { AuthGuard } from "./helpers/auth.guard";
+import { AuthInterceptor } from "./helpers/auth.interceptor";
 import { AuthenticationService } from "./services/authentication.service";
 import { AlertService } from "./services/alert.service";
 import { DataService } from "./services/data.service";
+
+registerLocaleData(localePl);
 
 @NgModule({
     declarations: [
@@ -27,7 +32,7 @@ import { DataService } from "./services/data.service";
     ],
     imports: [
         CommonModule,
-        HttpModule,
+        HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
         RouterModule.forRoot([
@@ -43,7 +48,12 @@ import { DataService } from "./services/data.service";
         AuthGuard,
         AuthenticationService,
         AlertService,
-        DataService
+        DataService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        },
     ]
 })
 export class AppModuleShared {

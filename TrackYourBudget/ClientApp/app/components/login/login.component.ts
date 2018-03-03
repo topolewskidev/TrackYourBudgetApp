@@ -1,5 +1,5 @@
 ﻿import { Component, Inject, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from "../../services/authentication.service"
 import { AlertService } from "../../services/alert.service"
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     constructor(
         private authenticationService: AuthenticationService,
         private alertService: AlertService,
-        private http: Http,
+        private http: HttpClient,
         private router: Router,
         private route: ActivatedRoute,
         @Inject('BASE_URL') private baseUrl: string) {
@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        console.log('dupa');
         this.authenticationService.logOut();
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }

@@ -50,6 +50,6 @@ export class AddExpenseComponent implements OnInit {
     }
 
     private onCategoriesDownload(result: any) {
-        this.categories = result.json() as Category[];
+        this.categories = result as Category[];
     }
 }
