@@ -12,7 +12,12 @@ if (module.hot) {
         const oldRootElem = document.querySelector('app');
         const newRootElem = document.createElement('app');
         oldRootElem!.parentNode!.insertBefore(newRootElem, oldRootElem);
-        modulePromise.then(appModule => appModule.destroy());
+        modulePromise.then(appModule => {
+            appModule.destroy();
+            if (oldRootElem !== null) {
+                oldRootElem!.parentNode!.removeChild(oldRootElem);
+            }
+        }); 
     });
 } else {
     enableProdMode();

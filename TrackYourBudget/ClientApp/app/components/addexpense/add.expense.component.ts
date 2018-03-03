@@ -4,13 +4,14 @@ import * as moment from 'moment';
 import { Category } from "./category"; 
 import { Expense } from "./expense"; 
 import { AlertService } from "../../services/alert.service"; 
-import { DataService } from "../../services/data.service"; 
+import { DataService } from "../../services/data.service";
+
 
 @Component({
     selector: 'expense-add',
     templateUrl: './add.expense.component.html'
 })
-export class AddExpenseComponent implements OnInit {
+export class AddExpenseComponent implements OnInit {  
     public newExpense: FormGroup;
     public categories: Category[];
 
@@ -40,11 +41,12 @@ export class AddExpenseComponent implements OnInit {
 
         this.dataService.addNewExpense(newExpense)
             .subscribe(
-                result => {
-                    this.alertService.success("Dodano nowy wydatek");},
-                error => {
-                    this.alertService.error("Nie udało się dodać wydatku!");
-                });
+            result => {
+                this.alertService.success("Dodano nowy wydatek!");
+            },
+            error => {
+                this.alertService.error("Nie udało się dodać wydatku!");
+            });
     }
 
     private onCategoriesDownload(result: any) {

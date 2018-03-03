@@ -33,7 +33,7 @@ namespace TrackYourBudget.Business.Users.Helpers
                 {
                     new Claim(ClaimTypes.Name, userId.ToString())
                 }),
-                Expires = null,
+                Expires = DateTime.Now.AddYears(5),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

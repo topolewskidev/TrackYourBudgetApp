@@ -24,7 +24,6 @@
     <None Remove="ClientApp\app\components\addexpense\add.expense.component.ts" />
     <None Remove="ClientApp\app\components\addexpense\category.ts" />
     <None Remove="ClientApp\app\components\addexpense\expense.ts" />
-    <None Remove="ClientApp\app\components\alert\alert.component.ts" />
     <None Remove="ClientApp\app\components\budget\budget.component.ts" />
     <None Remove="ClientApp\app\components\budget\budget.plan.with.categories.ts" />
     <None Remove="ClientApp\app\components\budget\category.plan.ts" />
@@ -46,7 +45,6 @@
     <TypeScriptCompile Include="ClientApp\app\components\addexpense\add.expense.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\addexpense\category.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\addexpense\expense.ts" />
-    <TypeScriptCompile Include="ClientApp\app\components\alert\alert.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\budget\budget.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\budget\budget.plan.with.categories.ts" />
     <TypeScriptCompile Include="ClientApp\app\components\budget\category.plan.ts" />

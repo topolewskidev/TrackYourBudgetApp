@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './components/app/app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { LoginComponent } from './components/login/login.component';
-import { AlertComponent } from './components/alert/alert.component';
 import { BudgetComponent } from './components/budget/budget.component';
 import { AddExpenseComponent } from "./components/addexpense/add.expense.component";
 import { LastExpensesComponent } from "./components/lastexpenses/last.expenses.component";
@@ -20,7 +19,6 @@ import { DataService } from "./services/data.service";
 @NgModule({
     declarations: [
         AppComponent,
-        AlertComponent,
         NavMenuComponent,
         AddExpenseComponent,
         LoginComponent,

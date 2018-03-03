@@ -1,13 +1,18 @@
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppModuleShared } from './app.shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppModuleShared } from './app.module';
 import { AppComponent } from './components/app/app.component';
+
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
     bootstrap: [ AppComponent ],
     imports: [
         BrowserModule,
-        AppModuleShared
+        BrowserAnimationsModule,
+        AppModuleShared,
+        ToastrModule.forRoot()
     ],
     providers: [
         { provide: 'BASE_URL', useFactory: getBaseUrl },

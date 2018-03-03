@@ -6,7 +6,8 @@
     "test": "karma start ClientApp/test/karma.conf.js"
   },
   "devDependencies": {
-    "@angular/animations": "4.2.5",
+    "@angular/animations": "^4.2.5",
+    "@angular/cli": "^1.7.2",
     "@angular/common": "4.2.5",
     "@angular/compiler": "4.2.5",
     "@angular/compiler-cli": "^4.2.5",
@@ -55,14 +56,16 @@
     "to-string-loader": "1.1.5",
     "typescript": "2.4.1",
     "url-loader": "0.5.9",
-    "webpack": "2.5.1",
+    "webpack": "^3.11.0",
+    "webpack-cli": "^2.0.10",
     "webpack-hot-middleware": "2.18.2",
     "webpack-merge": "4.1.0",
     "zone.js": "0.8.12"
   },
   "dependencies": {
     "@types/moment": "^2.13.0",
-    "moment": "^2.20.1"
+    "moment": "^2.20.1",
+    "ngx-toastr": "^8.3.0"
   },
   "optionalDependencies": {
     "fsevents": "*"
