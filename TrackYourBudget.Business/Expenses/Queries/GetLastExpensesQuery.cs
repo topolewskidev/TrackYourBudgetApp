@@ -26,7 +26,8 @@ namespace TrackYourBudget.Business.Expenses.Queries
                     {
                         CategoryName = e.CategoryBudgetPlan.Category.Name,
                         Date = e.Date,
-                        Amount = e.Amount
+                        Amount = e.Amount,
+                        Description = e.Description
                     })
                     .ToList();
             }

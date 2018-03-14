@@ -21,7 +21,8 @@ export class AddExpenseComponent implements OnInit {
         this.newExpense = new FormGroup({
             selectedDate: new FormControl(moment().format("YYYY-MM-DD"), Validators.required),
             amount: new FormControl('', [Validators.required, Validators.pattern('^[0-9\\,\\.\\+\\-*\\/\\(\\)]*$')]),
-            selectedCategory: new FormControl(null, Validators.required)
+            selectedCategory: new FormControl(null, Validators.required),
+            description: new FormControl(null)
         });
     }
 
@@ -36,7 +37,8 @@ export class AddExpenseComponent implements OnInit {
         var newExpense = new Expense({
             categoryId: newExpenseValues.selectedCategory,
             amount: eval(newExpenseValues.amount.replace(/,/g, '.')),
-            date: newExpenseValues.selectedDate
+            date: newExpenseValues.selectedDate,
+            description: newExpenseValues.description
         });
 
         this.dataService.addNewExpense(newExpense)

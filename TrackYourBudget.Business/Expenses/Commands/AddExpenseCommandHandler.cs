@@ -30,7 +30,8 @@ namespace TrackYourBudget.Business.Expenses.Commands
                 {
                     Amount = command.Amount,
                     CategoryBudgetPlanId = categoryBudgetPlanId,
-                    Date = command.Date
+                    Date = command.Date,
+                    Description = command.Description
                 });
 
                 _context.SaveChanges();

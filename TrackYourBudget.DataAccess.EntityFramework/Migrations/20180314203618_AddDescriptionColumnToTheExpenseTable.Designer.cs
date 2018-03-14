@@ -11,9 +11,10 @@ using TrackYourBudget.DataAccess;
 namespace TrackYourBudget.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20180314203618_AddDescriptionColumnToTheExpenseTable")]
+    partial class AddDescriptionColumnToTheExpenseTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

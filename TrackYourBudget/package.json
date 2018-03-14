@@ -61,12 +61,13 @@
     "webpack-cli": "^2.0.10",
     "webpack-hot-middleware": "2.21.1",
     "webpack-merge": "4.1.2",
-    "zone.js": "0.8.20"
-  },
-  "dependencies": {
+    "zone.js": "0.8.20",
     "@types/moment": "^2.13.0",
     "moment": "^2.20.1",
     "ngx-toastr": "^8.3.0"
+  },
+  "dependencies": {
+    "font": "0.0.4"
   },
   "optionalDependencies": {
     "fsevents": "*"
