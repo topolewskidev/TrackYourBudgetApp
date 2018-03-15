@@ -67,6 +67,8 @@
     "ngx-toastr": "^8.3.0"
   },
   "dependencies": {
+    "@angular/cdk": "^5.2.4",
+    "@angular/material": "^5.2.4",
     "font": "0.0.4"
   },
   "optionalDependencies": {

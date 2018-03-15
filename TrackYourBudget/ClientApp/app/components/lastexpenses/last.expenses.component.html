@@ -1,9 +1,17 @@
 ﻿<h1>Ostatnie wydatki</h1>
-
-<div class="panel panel-default" *ngFor="let expense of expenses;">
-    <div class="panel-heading container">
-        <span class="col-sm-5">{{expense.date | date: 'dd.MM.yyyy' }}</span>
-        <label class="col-sm-5">{{expense.categoryName}}</label>
-        <label class="pull-right">{{expense.amount | number:'1.2-2'}}</label>
-    </div>
-</div>
+<mat-list class="container-fluid">
+    <mat-list-item class="row" *ngFor="let expense of expenses;let i = index">
+        <div class="col-sm-3 col-md-1 col-lg-1 col-xs-4">
+            <small *ngIf="i == 0 || expenses[i-1].date != expense.date" >{{expense.date | date: 'd MMM' }}</small>
+        </div>
+        <div class="col-sm-7 col-md-9 col-lg-10 col-xs-6">
+            <strong>{{expense.categoryName}}</strong>
+            <br />
+            <small class="right">{{expense.description}}</small>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-1 col-xs-2">
+            <label>{{expense.amount | number:'1.2-2'}}</label>
+        </div>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+</mat-list>

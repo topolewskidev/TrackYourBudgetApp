@@ -21,7 +21,8 @@ const nonTreeShakableModules = [
     'event-source-polyfill',
     'jquery',
     'ngx-toastr',
-    'ngx-toastr/toastr.css'
+    'ngx-toastr/toastr.css',
+    '@angular/material/prebuilt-themes/indigo-pink.css'
 ];
 const allModules = treeShakableModules.concat(nonTreeShakableModules);
 
