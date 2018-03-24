@@ -1,23 +1,22 @@
 ﻿<h1>Dodaj wydatek</h1>
 
-<form novalidate [formGroup]="newExpense" (ngSubmit)="onAddButtonClick()" >
-    <div class="form-group">
-        <h4>Data</h4>
-        <input type="date" class="form-control" formControlName="selectedDate" />
-    </div>
-    <div class="form-group">
-        <h4>Kategoria</h4>
-        <select class="form-control" formControlName="selectedCategory">
-            <option class="form-control" *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <h4>Kwota</h4>
-        <input type="text" class="form-control" formControlName="amount" />
-    </div>
-    <div class="form-group">
-        <h4>Opis</h4>
-    <input type="text" class="form-control" formControlName="description"/>
-    </div>
-    <button type="submit" [disabled]="newExpense.invalid" class="btn btn-primary">Dodaj</button>
+<form novalidate class="add-expense-container" [formGroup]="newExpense" (ngSubmit)="onAddButtonClick()">
+    <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Data" formControlName="selectedDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi="true" #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Kategoria" formControlName="selectedCategory">
+            <mat-option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Kwota" type="text" formControlName="amount"/>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Opis" type="text" formControlName="description"/>
+    </mat-form-field>
+    <button type="submit" [disabled]="newExpense.invalid" mat-raised-button color="primary" >Dodaj</button>
 </form>

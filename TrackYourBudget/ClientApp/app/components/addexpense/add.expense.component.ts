@@ -9,7 +9,8 @@ import { DataService } from "../../services/data.service";
 
 @Component({
     selector: 'expense-add',
-    templateUrl: './add.expense.component.html'
+    templateUrl: './add.expense.component.html',
+    styleUrls: ['./add.expense.component.css']
 })
 export class AddExpenseComponent implements OnInit {  
     public newExpense: FormGroup;

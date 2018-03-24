@@ -5,7 +5,16 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localePl from '@angular/common/locales/pl';
-import { MatListModule } from '@angular/material';
+import {
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonModule
+} from '@angular/material';
 
 
 import { AppComponent } from './components/app/app.component';
@@ -38,6 +47,13 @@ registerLocaleData(localePl);
         FormsModule,
         ReactiveFormsModule,
         MatListModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatButtonModule,
         RouterModule.forRoot([
             { path: '', redirectTo: 'budget', pathMatch: 'full', canActivate: [AuthGuard]  },
             { path: 'budget', component: BudgetComponent, canActivate: [AuthGuard] },
